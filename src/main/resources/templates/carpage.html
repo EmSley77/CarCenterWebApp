@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2>Car-Center application</h2>
+<h5>by: Emanuel sleyman</h5>
+<form method="get" action="car"> </form>
+
+<form method="post" action="registercar">
+    <input type="text" name="reg" placeholder="RegNummer" required="required">
+    <input type="text" name="brand" placeholder="Brand" required="required">
+    <input type="text" name="model" placeholder="Model" required="required">
+    <input type="text" name="color" placeholder="Color" required="required">
+    <input type="number" name="year" placeholder="Year" required="required">
+    <button type="submit">Registrera bil i katalogen</button>
+</form>
+<a>Resultat : <span th:text="${addcar}"></span></a> <br>
+
+<form action="removecar" method="post">
+    <a>Ange registreringsnummer för att ta bort bil</a>
+    <input type="text" name="reg" placeholder="Registreringsnummer" required="required">
+    <button type="submit">Ta bort</button>
+</form>
+<a>Resultat: <span th:text="${removal}"></span></a>
+<form method="get" action="getcars">
+    <button type="submit">Hämta alla bilar här!</button>
+</form>
+
+<table>
+    <thead>
+    <tr th:each=" car : ${allcars}">
+        <td th:text="${car.getReg()}"></td>
+        <td th:text="${car.getBrand()}"></td>
+        <td th:text="${car.getModel()}"></td>
+        <td th:text="${car.getColor()}"></td>
+        <td th:text="${car.getYear()}"></td>
+    </tr>
+    </thead>
+</table>
+
+</body>
+</html>
