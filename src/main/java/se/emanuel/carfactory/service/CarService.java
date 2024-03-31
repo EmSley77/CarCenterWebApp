@@ -1,6 +1,7 @@
 package se.emanuel.carfactory.service;
 //Emanuel sleyman
 //2024-03-19
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
@@ -23,28 +24,25 @@ public class CarService {
 
     public String addCar(String reg, String brand, String model, String color, int year, int cost) {
         List<Car> cars = repo.findCarByReg(reg);
-        Car car = new Car();
-        for (Car c: cars) {
 
-            car.setReg(reg);
-            car.setBrand(brand);
-            car.setModel(model);
-            car.setColor(color);
-            car.setYear(year);
-            car.setCost(cost);
-
-            if (!c.getReg().equalsIgnoreCase(reg)) {
-                repo.save(car);
-                return "Successfully saved into database";
-            }
-            else {
-                return "cannot save in database, reg already exists, try another vaild regnumber!";
-            }
+        if (!cars.isEmpty()) {
+            return "Cannot save in database, registration number already exists. Please try another valid registration number!";
         }
-        return "something went wrong";
+        Car car = new Car();
+
+
+        car.setReg(reg);
+        car.setBrand(brand);
+        car.setModel(model);
+        car.setColor(color);
+        car.setYear(year);
+        car.setCost(cost);
+
+        repo.save(car);
+        return "Successfully saved into database";
     }
 
-    public String removeCar(String reg ){
+    public String removeCar(String reg) {
         Optional<Car> car = repo.findById(reg);
         if (car.isPresent()) {
             repo.deleteById(reg);
