@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+    form {
+        background-color: #f10303;
+        padding: 50px;
+        border-radius: 5px;
+        align-items: center;
+        border: 2px solid #0c0303;
+
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 110%;
+        padding: 11px;
+        margin-bottom: 10px;
+        border: 2px solid #000000;
+        border-radius: 5px;
+    }
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #5fa1e3;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border: 2px solid #000000;
+
+    }
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<h2>Logga in</h2>
+<form action="login" method="post">
+    <input type="text" placeholder="Username" name="username" required="required">
+    <br>
+    <input type="password" placeholder="password" name="password" required="required">
+    <br>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>

@@ -20,17 +20,29 @@ public class Car {
     @Basic
     @Column(name = "year", nullable = false)
     private Integer year;
+    @Basic
+    @Column(name = "cost", nullable = false)
+    private int cost;
 
 
-    public Car(String reg, String brand, String model, String color, Integer year) {
+    public Car(String reg, String brand, String model, String color, Integer year, int cost) {
         this.reg = reg;
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.year = year;
+        this.cost = cost;
     }
 
     public Car() {
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public String getColor() {
