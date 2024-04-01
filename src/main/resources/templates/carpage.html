@@ -87,10 +87,18 @@
         <td th:text="${car.getModel()}"></td>
         <td th:text="${car.getColor()}"></td>
         <td th:text="${car.getYear()}"></td>
+        <td th:text="${car.getCost()}"></td>
         <td>
             <form action="removebutton" method="post">
                 <input type="hidden" name="id" th:value="${car.getReg()}">
                 <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form action="update" method="post">
+                <input type="number" name="cost" placeholder="Nya priset" required="required">
+                <input type="hidden" name="id" th:value="${car.getReg()}">
+                <button type="submit">Update</button>
             </form>
         </td>
     </tr>

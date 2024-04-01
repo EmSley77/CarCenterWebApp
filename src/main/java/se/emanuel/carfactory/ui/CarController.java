@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.emanuel.carfactory.service.CarService;
 import se.emanuel.carfactory.service.RemoveCarService;
+import se.emanuel.carfactory.service.UpdateCarService;
 
 @Controller
 public class CarController {
 
     @Autowired
     CarService service;
+
+    @Autowired
+    UpdateCarService updateCarService;
 
     @Autowired
     RemoveCarService removeCarService;
@@ -56,6 +60,17 @@ public class CarController {
     public String remove(@RequestParam String id, Model model) {
         String result = removeCarService.removeCar(id);
         model.addAttribute("result", result);
+        model.addAttribute("allcars", service.allCars());
+        return "carpage";
+    }
+
+    @PostMapping("update")
+    public String updatePrice(Model model,
+                              @RequestParam int cost,
+                              @RequestParam String id
+    ) {
+        String results = updateCarService.updateCarPrice(id,cost);
+        model.addAttribute("updateCar",results);
         model.addAttribute("allcars", service.allCars());
         return "carpage";
     }
