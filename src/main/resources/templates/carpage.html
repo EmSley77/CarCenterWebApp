@@ -64,7 +64,7 @@
 <form method="get" action="car"> </form>
 
 <form method="post" action="registercar">
-    <a>Resultat : <span th:text="${addcar}"></span></a>
+    <a>Result: <span th:text="${addcar}"></span></a>
     <br>
     <input type="text" name="reg" placeholder="RegNummer" required="required">
     <input type="text" name="brand" placeholder="Brand" required="required">
@@ -78,7 +78,9 @@
 <form method="get" action="getcars">
     <button type="submit">Hämta alla bilar här!</button>
 </form>
-
+<a>Result: <span th:text="${updateCar}"></span></a>
+<br>
+<a>Result: <span th:text="${result}"></span></a>
 <table>
     <thead>
     <tr th:each=" car : ${allcars}">
@@ -104,7 +106,8 @@
     </tr>
     </thead>
 </table>
-<a>Result: <span th:text="${result}"></span></a>
+
+
 
 </body>
 <form action="loginpage" method="get">

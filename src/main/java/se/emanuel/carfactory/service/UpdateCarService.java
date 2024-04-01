@@ -18,12 +18,12 @@ public class UpdateCarService {
     public String updateCarPrice(String reg, int newPrice) {
         List<Car> car = repository.findCarByReg(reg);
         if (car.isEmpty()) {
-            return "Kunde inte hitta bil";
+            return "Could not find car";
         }
 
         for (Car c: car) {
             c.setCost(newPrice);
         }
-        return "Uppdaterat priset!";
+        return "Price has been updated!";
     }
 }
